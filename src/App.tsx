@@ -1,11 +1,13 @@
-import { Fragment, useState } from "react";
+import * as React from "react";
+
 import Home from "./pages/home";
 import About from "./pages/about";
 import Work from "./pages/work";
 import Thoughts from "./pages/thoughts";
-import Particles from "./components/ui/particles.tsx";
-import { Stack, StackSeparator } from "@chakra-ui/react";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import WriteThought from "./pages/writeThought.tsx";
+import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
         <Route path="/Me" element={<About />} />
         <Route path="/work" element={<Work />} />
         <Route path="/thoughts" element={<Thoughts />} />
+        <Route path="/blog" element={<WriteThought />} />
       </Routes>
     </BrowserRouter>
   );

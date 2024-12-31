@@ -24,12 +24,12 @@ function NavBar() {
             },
           ]}
         >
-          {(item, index) => (
+          {(item) => (
             <Link href={item.href}>
               <Text
                 _hover={{ color: "blue.400"  }}
                 color="white"
-                textStyle={"2xl"}
+                textStyle={"xl"}
               >
                 {item.text}
               </Text>
