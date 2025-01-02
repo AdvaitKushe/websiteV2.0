@@ -37,7 +37,7 @@ function BlogCard({ title, thought, time }: { title: string; thought: string; ti
             <DialogTitle>{title}</DialogTitle>
             {time}
           </DialogHeader>
-          <DialogBody>{thought}</DialogBody>
+          <DialogBody whiteSpace="pre-wrap">{thought}</DialogBody>
 
           <DialogCloseTrigger />
         </DialogContent>
