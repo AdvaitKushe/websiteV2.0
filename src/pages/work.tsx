@@ -10,6 +10,7 @@ import projectsJson from "../files/projects.json";
 interface Stack {
   src: string;
   name: string;
+  id: string;
 }
 interface Work {
   title: string;

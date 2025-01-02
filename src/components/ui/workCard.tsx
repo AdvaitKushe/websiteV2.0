@@ -1,10 +1,13 @@
-import { Card, HStack, For, Flex } from "@chakra-ui/react";
+import { Card, HStack, Flex } from "@chakra-ui/react";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { Tooltip } from "@/components/ui/tooltip";
+import { useId } from "react";
 
 interface Stack {
   src: string;
   name: string;
+  id: string;
 }
 
 interface WorkCard {
@@ -16,6 +19,8 @@ interface WorkCard {
 }
 
 function WorkCard({ title, description, image, stack, linkToWork }: WorkCard) {
+  const id = useId();
+
   return (
     <Card.Root
       width="320px"
@@ -25,32 +30,33 @@ function WorkCard({ title, description, image, stack, linkToWork }: WorkCard) {
     >
       <Card.Body color={"grey.200"} gap="2">
         <Flex gap="28" alignItems="center">
-          <Avatar src={image} name="Nue Camp" size="lg" shape="rounded" />
-          <HStack
-            gap="25"
-            justifyContent="flex-end"
-            flexGrow={1}
-            position="relative"
-            overflow="hidden" /* Prevent overflow */
-          >
-            <For each={stack}>
-              {(item, index) => (
-                <Avatar
-                  _hover={{
-                    transform: "scale(1.1)", // Pops up on hover
-                    zIndex: 10, // Brings to front
-                  }}
-                  size="xs"
-                  name={item.name}
-                  src={item.src}
-                  position="relative" // Required for zIndex to work
-                  style={{
-                    marginLeft: index > 0 ? "-10px" : "0px", // Overlap effect
-                    transition: "transform 0.2s ease, z-index 0.2s ease", // Smooth transition
-                  }}
-                />
-              )}
-            </For>
+          <Tooltip ids={{ trigger: id }} content={title}>
+            <Avatar ids={{ root: id }} src={image} name={title} size="lg" shape="rounded" />
+          </Tooltip>
+
+          <HStack key={id} gap="25" justifyContent="flex-end" flexGrow={1} position="relative">
+            {stack.map((item, index) => {
+              const tooltipId = `tooltip-stack-${item.id ?? index}`;
+              return (
+                <Tooltip  openDelay={100} key={tooltipId} ids={{ trigger: tooltipId }} content={item.name}>
+                  <Avatar
+                    ids={{ root: tooltipId }}
+                    _hover={{
+                      transform: "scale(1.1)",
+                      zIndex: 10,
+                    }}
+                    size="xs"
+                    name={item.name}
+                    src={item.src}
+                    position="relative"
+                    style={{
+                      marginLeft: index > 0 ? "-10px" : "0px",
+                      transition: "transform 0.2s ease, zIndex 0.2s ease",
+                    }}
+                  />
+                </Tooltip>
+              );
+            })}
           </HStack>
         </Flex>
 
@@ -59,6 +65,7 @@ function WorkCard({ title, description, image, stack, linkToWork }: WorkCard) {
         </Card.Title>
         <Card.Description color={"#333333"}>{description}</Card.Description>
       </Card.Body>
+
       <Card.Footer justifyContent="flex-end">
         {linkToWork && (
           <Button variant="surface" onClick={() => window.open(linkToWork)}>
