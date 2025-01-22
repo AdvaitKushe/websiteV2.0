@@ -1,4 +1,4 @@
-import { Box, Text, Card } from "@chakra-ui/react";
+import { Text, Card } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import BookCard from "./bookCard.tsx";
 

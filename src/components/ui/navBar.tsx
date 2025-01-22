@@ -1,4 +1,4 @@
-import { HStack, Text, Link, Box, For, Card } from "@chakra-ui/react";
+import { HStack, Text, Link, For, Card } from "@chakra-ui/react";
 
 function NavBar() {
   return (

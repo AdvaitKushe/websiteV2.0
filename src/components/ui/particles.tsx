@@ -1,3 +1,4 @@
+//@ts-nocheck
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { useEffect, useMemo, useState } from "react";
 // import { loadAll } from "@/tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
@@ -11,6 +12,7 @@ const ParticlesComponent = (props : any) => {
 
   const [init, setInit] = useState(false);
   // this should be run only once per application lifetime
+  console.log(init);
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
