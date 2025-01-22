@@ -1,7 +1,7 @@
 
 
 import Home from "./pages/home";
-import Me from "./pages/me.tsx";
+
 import Work from "./pages/work";
 import Thoughts from "./pages/thoughts";
 
