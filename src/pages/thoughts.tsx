@@ -1,6 +1,6 @@
 import Particles from "../components/ui/particles.tsx";
 import NavBar from "../components/ui/navBar.tsx";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import BlogCard from "../components/ui/blogCard.tsx";
 
@@ -25,20 +25,27 @@ function Thoughts() {
       <div className="text">
         <Particles id="particles" />
         <NavBar />
-       
-        <Flex margin="20" gap="4" direction="row" wrap="wrap">
-          {thoughtsJson.map(
-            (item: { title: string; thought: string; time: string }) => (
+
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          marginTop="100px"
+          width="100%"
+          maxWidth="1200px"
+          padding="0 20px"
+        >
+          <Flex gap="4" direction="row" wrap="wrap" width="100%" justify="flex-start">
+            {thoughtsJson.map((item: { title: string; thought: string; time: string }) => (
               <BlogCard
                 key={item.time}
                 title={item.title}
                 thought={item.thought}
                 time={item.time}
-                
               />
-            )
-          )}
-        </Flex>
+            ))}
+          </Flex>
+        </Box>
       </div>
     </div>
   );

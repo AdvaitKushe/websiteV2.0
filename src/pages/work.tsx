@@ -29,11 +29,25 @@ function Work() {
   return (
     <div className="wrapper">
       <div className="text">
+        
         <Particles id="particles" />
         <NavBar />
-        <Box >
-          <Text>Work</Text>
-          <Stack gap="4" direction="row" wrap="wrap">
+        <Box 
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          marginTop="100px"
+          width="100%"
+          maxWidth="1200px"
+          padding="0 20px"
+        >
+          <Text fontSize="4xl" color="white" marginBottom="6">Work</Text>
+          <Stack 
+            gap="4" 
+            direction="row" 
+            wrap="wrap"
+            justify="center"
+          >
             <For each={workData}>
               {(work) => (
                 <WorkCard
@@ -45,22 +59,28 @@ function Work() {
               )}
             </For>
           </Stack>
-        </Box>
-        <Box marginTop={8}>
-          <Text>Personal Projects</Text>
-          <Stack gap="4" direction="row" wrap="wrap">
-            <For each={projects}>
-              {(work) => (
-                <WorkCard
-                  title={work.title}
-                  description={work.description}
-                  image={work.image}
-                  stack={work.stack}
-                  linkToWork={work.link}
-                />
-              )}
-            </For>
-          </Stack>
+
+          <Box marginTop={8} width="100%" display="flex" flexDirection="column" alignItems="center">
+            <Text fontSize="4xl" color="white" marginBottom="6">Personal Projects</Text>
+            <Stack 
+              gap="4" 
+              direction="row" 
+              wrap="wrap"
+              justify="center"
+            >
+              <For each={projects}>
+                {(work) => (
+                  <WorkCard
+                    title={work.title}
+                    description={work.description}
+                    image={work.image}
+                    stack={work.stack}
+                    linkToWork={work.link}
+                  />
+                )}
+              </For>
+            </Stack>
+          </Box>
         </Box>
       </div>
     </div>

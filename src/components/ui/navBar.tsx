@@ -1,8 +1,18 @@
-import { HStack, Text, Link, Box, For } from "@chakra-ui/react";
+import { HStack, Text, Link, Box, For, Card } from "@chakra-ui/react";
 
 function NavBar() {
   return (
-    <Box position="fixed" top="3" left="10">
+    <Card.Root
+      size="sm"
+      position="fixed"
+      top="5"
+      left="50%"
+      transform="translateX(-50%)"
+      backgroundColor="rgba(0, 0, 0, .9)"
+      padding="4"
+      borderRadius="2xl"
+      zIndex={1000}
+    >
       <HStack top="0" gap="20">
         <For
           each={[
@@ -26,18 +36,14 @@ function NavBar() {
         >
           {(item) => (
             <Link href={item.href}>
-              <Text
-                _hover={{ color: "blue.400"  }}
-                color="white"
-                textStyle={"xl"}
-              >
+              <Text _hover={{ color: "blue.400" }} color="white" textStyle={"xl"}>
                 {item.text}
               </Text>
             </Link>
           )}
         </For>
       </HStack>
-    </Box>
+    </Card.Root>
   );
 }
 
